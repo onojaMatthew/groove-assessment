@@ -1,7 +1,6 @@
 require("dotenv").config();
 import mongoose from 'mongoose';
 import logger from './logger'
-import { config } from "dotenv";
 
 mongoose.Promise = global.Promise;
 
