@@ -1,11 +1,18 @@
+require("dotenv").config();
 import mongoose from 'mongoose';
 import logger from './logger'
+import { config } from "dotenv";
 
 mongoose.Promise = global.Promise;
 
-const uri = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@ds215910.mlab.com:15910/contact`
-const dev = "dev"
-const connection = mongoose.connect(uri);
+// const uri = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@ds215910.mlab.com:15910/contact`
+const uri = "mongodb://localhost:27017/contact";
+const env = "dev"
+const connection = mongoose.connect(uri, {
+	useUnifiedTopology: true,
+	useNewUrlParser: true,
+	useCreateIndex: true
+});
 
 connection
 	.then(db => {

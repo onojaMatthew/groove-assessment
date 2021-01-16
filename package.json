@@ -6,23 +6,33 @@
 		"clean": "rimraf 'dist'",
 		"start": "cd dist && node server.js",
 		"build": "babel src --out-dir dist",
-		"watch": "babel -w src --out-dir dist"
+		"watch": "babel -w src --out-dir dist",
+		"test": "cd dist && mocha --recursive --exit"
 	},
 	"license": "MIT",
 	"devDependencies": {
+		"@types/dotenv": "^8.2.0",
 		"babel-cli": "^6.26.0",
 		"babel-core": "^6.26.0",
 		"babel-plugin-transform-class-properties": "^6.24.1",
 		"babel-plugin-transform-export-extensions": "^6.22.0",
 		"babel-plugin-transform-object-rest-spread": "^6.26.0",
 		"babel-preset-env": "^1.6.1",
-		"rimraf": "^2.6.2"
+		"mocha": "^8.2.1",
+		"rimraf": "^2.6.2",
+		"supertest": "^6.1.1"
 	},
 	"dependencies": {
+		"@sendgrid/mail": "^7.4.2",
+		"bcrypt": "^5.0.0",
+		"chai": "^4.2.0",
 		"cookie-parser": "^1.4.3",
 		"dotenv": "^5.0.1",
 		"express": "^4.16.3",
+		"express-validator": "^6.9.2",
 		"express-winston": "^2.5.1",
+		"find-config": "^1.0.0",
+		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^5.0.17",
 		"mongoose-bcrypt": "^1.5.1",
 		"mongoose-string-query": "^0.2.5",

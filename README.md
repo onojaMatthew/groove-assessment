@@ -47,7 +47,10 @@ Start Development
     - > `npm run watch`
 * To run your app server 
     - > `npm run start`
-
+* To test your app
+    - > `npm run test`
 Submitting
 --
 Push the repo to your favourite repo platform and share the url.
+
+

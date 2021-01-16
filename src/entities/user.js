@@ -30,7 +30,8 @@ export const UserSchema = new Schema(
 			type: String,
 			trim: true,
 			required: true
-		}
+		},
+		resetPasswordToken: { type: String, required: false },
 	},
 	{ collection: 'users' }
 )
@@ -41,4 +42,7 @@ UserSchema.plugin(mongooseStringQuery);
 
 UserSchema.index({ email: 1, username: 1 });
 
-module.exports = exports = mongoose.model('User', UserSchema);
+const User = mongoose.model("User", UserSchema);
+// module.exports = exports = mongoose.model('User', UserSchema);
+
+export default User;

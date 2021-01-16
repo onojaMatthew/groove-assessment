@@ -4,10 +4,10 @@ NOTE:
 Don't forget to implement user authentication for the
 contact resource
 */
-require('dotenv').config()
 
 import fs from 'fs';
 import path from 'path';
+require('dotenv').config({ path: path.resolve(__dirname, './.env') })
 import express from 'express';
 import expressWinston from 'express-winston';
 import bodyParser from 'body-parser';
@@ -51,4 +51,4 @@ app.listen(port, err => {
 	);
 });
 
-module.exports = app;
+export default app;

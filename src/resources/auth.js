@@ -1,9 +1,9 @@
-import Auth from '../controllers/auth';
+import { login, signup, forgotPassword} from '../controllers/auth';
 
 module.exports = app => {
-	app.route('/auth/login').post(Auth.login);
-	app.route('/auth/signup').post(Auth.signup);
+	app.route('/auth/login').post(login);
+	app.route('/auth/signup').post(signup);
 
 	/*** BONUS POINTS ***/
-	app.route('/auth/forgotPassword').post(Auth.forgotPassword);
+	app.route('/auth/forgotPassword').post(forgotPassword);
 };
