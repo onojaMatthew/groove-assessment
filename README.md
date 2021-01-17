@@ -4,7 +4,7 @@ Contact/Address Book (Rest Backend) Concept - Assessment
 ---
 
 * Pull the assessment solution repo
-    - > `git clone https://github.com/onojaMatthew/groove-assessment`
+    - > `git clone https://github.com/onojaMatthew/groove-assessment.git`
 * Pull up your favorite console and change to this directory
 * Install the projects dependencies 
     - > `npm install`
