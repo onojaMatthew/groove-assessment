@@ -7,7 +7,7 @@ contact resource
 
 import fs from 'fs';
 import path from 'path';
-require('dotenv').config({ path: path.resolve(__dirname, './.env') })
+require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 import express from 'express';
 import expressWinston from 'express-winston';
 import bodyParser from 'body-parser';
@@ -16,7 +16,7 @@ import logger from './utils/logger';
 
 const app = express();
 
-const port = 3001
+const port = process.env.PORT || 3001;
 const env = process.env.NODE_ENV;
 
 app.use(bodyParser.urlencoded({ extended: true }));
