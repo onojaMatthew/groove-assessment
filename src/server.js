@@ -7,7 +7,7 @@ contact resource
 
 import fs from 'fs';
 import path from 'path';
-require('dotenv').config({ path: path.resolve(__dirname, './.env') });
+require('dotenv').config({ path: path.resolve(__dirname + '/../.env') });
 import express from 'express';
 import expressWinston from 'express-winston';
 import bodyParser from 'body-parser';
