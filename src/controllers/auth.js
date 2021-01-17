@@ -1,5 +1,5 @@
-const path = require('path')
-require('dotenv').config({ path: require('find-config')('.env') })
+import path from "path"
+require("dotenv").config({ path: path.resolve(__dirname + "/../../.env")});
 import User from '../entities/user';
 import logger from '../utils/logger';
 import { mailer } from "../utils/mailer";
@@ -16,14 +16,13 @@ import jwt from "jsonwebtoken";
 
 
 export const login = async (req, res) => {
-	const SECRET_KEY = "jsdkdjskdjfk"
 	if (!req.body.username || !req.body.password) return res.status(400).json({ error: "Username and password are required" });
 	try {
 		const user = await User.findOne({ username: { $regex: req.body.username, $options: "i" } });
 		if (!user) return res.status(404).json({ error: "User does not exist" });
 
 		// Create an authentication token that expires in 2 day
-		const token = jwt.sign({ _id: user._id, email: user.email }, SECRET_KEY, { expiresIn: "2days"});
+		const token = jwt.sign({ _id: user._id, email: user.email }, process.env.SECRET_KEY, { expiresIn: "2days"});
 
 		const { email, name, username } = user;
 		// save the token in the cookie
@@ -74,13 +73,12 @@ export const signup = async (req, res) => {
  */
 export const forgotPassword = async (req, res) => {
 	const { email } = req.body;
-	const SECRET_KEY = "gibrishkey43uielsskjsdslkdaghhghgfggghjfg";
 
 	if (!email) return res.status(400).json({ error: "Account email is required" });
 	try {
 		let user = await User.findOne({ email });
 		if (!user) return res.status(400).json({ error: "User not found" });
-		const token = jwt.sign({ _id: user._id }, SECRET_KEY, { expiresIn: "15m" });
+		const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY, { expiresIn: "15m" });
 		user.resetPasswordToken = token;
 		const updatedUser = await user.save();
 		if (!updatedUser) return res.status(400).json({ error: "Operation failed. Please try again" });

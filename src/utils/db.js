@@ -1,12 +1,19 @@
-require("dotenv").config();
+import path from "path"
+require("dotenv").config({ path: path.resolve(__dirname + "/../../.env")});
 import mongoose from 'mongoose';
 import logger from './logger'
 
 mongoose.Promise = global.Promise;
 
 // const uri = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@ds215910.mlab.com:15910/contact`
-const uri = "mongodb://localhost:27017/contact";
-const env = "dev"
+const env = process.env.NODE_ENV;
+
+let uri;
+if (env === "test") {
+	uri = process.env.TEST_DB;
+} else {
+	uri = process.env.DEV_DB;
+}
 const connection = mongoose.connect(uri, {
 	useUnifiedTopology: true,
 	useNewUrlParser: true,

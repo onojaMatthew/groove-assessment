@@ -17,7 +17,7 @@ import logger from './utils/logger';
 const app = express();
 
 const port = 3001
-const env = "dev"
+const env = process.env.NODE_ENV;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

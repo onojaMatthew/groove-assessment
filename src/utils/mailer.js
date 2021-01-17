@@ -1,11 +1,13 @@
+import path from "path"
+require("dotenv").config({ path: path.resolve(__dirname + "/../../.env")});
 const sgMail = require('@sendgrid/mail');
 
 export const mailer = (data, res) => {
-  sgMail.setApiKey("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");
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   const msg = {
     to: data.to,
-    from: "matthew.onoja@ojirehprime.com",
+    from: process.env.SENDGRID_SENDER_EMAIL,
     subject: data.subject,
     text: data.text,
     html: data.html,

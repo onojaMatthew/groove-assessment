@@ -12,7 +12,7 @@ let contact;
 let token;
 let newContact;
 
-describe("Test for User and Contact API endpoints", () => {
+describe("UnitTest for User and Contact API endpoints", () => {
   before(done => {
     User.deleteMany().exec()
     Contact.deleteMany().exec()
@@ -176,6 +176,4 @@ describe("Test for User and Contact API endpoints", () => {
         done();
       })
   })
-
-
 })
